@@ -43,8 +43,9 @@ li{
 
 .setup{
     max-height: 40vh;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
+    
     padding: 20px;
     background-color: #f8f9fa;
     border-radius: 8px;
@@ -109,15 +110,11 @@ input[type="text"] {
 
 input{
     width: 300px;
+    height: 4vh;
     border-radius: 20px;
    
 }
 
-form{
-    margin-right: 30px;
-   margin-left: 30px;
-
-}
 
 .flashcard{
     background-color: white ;
@@ -126,6 +123,13 @@ form{
     color: white;
 
 }
+
+.form-group{
+    margin-right: 30px;
+   margin-left: 10px;
+}
+
+
 
 
 
@@ -152,16 +156,22 @@ form{
 
 .flash-cards{
 
-    background-color: rgba(202, 190, 190, 0.882);
+    background-color: rgba(69, 216, 6, 0.882);
     width: 500px;
     height: 30vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
 
 }
 
 .center{
     display: flex;
 
+}
+
+.answer{
+    color: white;
 }
