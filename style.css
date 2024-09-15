@@ -120,9 +120,48 @@ form{
 }
 
 .flashcard{
-    background-color: white;
+    background-color: white ;
     color: black;
     margin-top: 20px;
+    color: white;
 
 }
 
+
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjust as needed for spacing between setup and flashcards */
+}
+
+.flashcards-container {
+    /* Add styles as needed, for example: */
+    width: 100%;
+    height: 30vh;
+    padding: 20px;
+    background-color: black;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+
+}
+
+.flash-cards{
+
+    background-color: rgba(202, 190, 190, 0.882);
+    width: 500px;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.center{
+    display: flex;
+
+}
