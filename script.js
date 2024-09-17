@@ -1,5 +1,3 @@
-//DOM objects
-
 const form = document.getElementById("flashcard-form");
 //Form elements
 const question = document.getElementById("question");
@@ -10,21 +8,26 @@ const flashcard = document.querySelector(".flash-cards");
 const saveButton = document.querySelector(".btn-save");
 const GoRight = document.getElementById("Buttonright");
 const GoLeft = document.getElementById("Buttonleft");
+const container = document.querySelector(".flashcards-container");
 
 const FlashList = [];
 let currentIndex = 0;
+let bool = true; // Change from const to let
 
 function CreateFlash() {
     const flashCardDiv = document.createElement('div');
     flashCardDiv.className = 'flash-cards';
     flashCardDiv.innerHTML = `
         <h3>${question.value}</h3>
-        <p class="answer" style="display: none; >${answer.value}</p>
+        <h3 class="answer" style="display: none;">${answer.value}</h3>
     `;
-    FlashList.push(flashCardDiv);
-
-    updateFlashcard();
     
+    // Add toggle answer event listener to the newly created flashcard
+    flashCardDiv.addEventListener('click', toggleAnswer);
+
+    FlashList.push(flashCardDiv);
+    updateFlashcard();
+
     // Clear input fields
     question.value = '';
     answer.value = '';
@@ -60,13 +63,27 @@ function swipeLeft() {
 }
 
 function toggleAnswer() {
-    
+    const currentFlashcard = FlashList[currentIndex];
+    if (currentFlashcard) {
+        const questionElement = currentFlashcard.querySelector('h3');
+        const answerElement = currentFlashcard.querySelector('.answer');
+
+        if (bool) {
+            questionElement.style.display = 'none';
+            answerElement.style.display = 'block';
+        } else {
+            questionElement.style.display = 'block';
+            answerElement.style.display = 'none';
+        }
+
+        bool = !bool; // Toggle bool after changing display
+    }
 }
 
 saveButton.addEventListener("click", CreateFlash);
 GoRight.addEventListener("click", swipeRight);
 GoLeft.addEventListener("click", swipeLeft);
-flashcard.addEventListener("click", toggleAnswer);
+
 
 
 

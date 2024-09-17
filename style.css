@@ -156,7 +156,7 @@ input{
 
 .flash-cards{
 
-    background-color: rgba(69, 216, 6, 0.882);
+    background-color: white;
     width: 500px;
     height: 30vh;
     display: flex;
@@ -164,7 +164,12 @@ input{
     align-items: center;
     border-radius: 10px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: BLACK;
+}
 
+.flash-cards.flipped {
+    background-color: #f0f0f0;
 }
 
 .center{
@@ -173,5 +178,6 @@ input{
 }
 
 .answer{
-    color: white;
+    color: black;
+    
 }
