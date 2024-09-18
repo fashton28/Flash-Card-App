@@ -71,9 +71,12 @@ function toggleAnswer() {
         if (bool) {
             questionElement.style.display = 'none';
             answerElement.style.display = 'block';
+            currentFlashcard.classList.toggle("flipped");
+
         } else {
             questionElement.style.display = 'block';
             answerElement.style.display = 'none';
+            currentFlashcard.classList.toggle("flipped");
         }
 
         bool = !bool; // Toggle bool after changing display

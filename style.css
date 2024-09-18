@@ -166,10 +166,11 @@ input{
     cursor: pointer;
     transition: background-color 0.3s ease;
     color: BLACK;
+    transform: rotateY(0deg);
 }
 
 .flash-cards.flipped {
-    background-color: #f0f0f0;
+    transform: rotateY(180deg);
 }
 
 .center{
@@ -181,3 +182,4 @@ input{
     color: black;
     
 }
+
