@@ -14,19 +14,41 @@ const FlashList = [];
 let currentIndex = 0;
 let bool = true; // Change from const to let
 
-function CreateFlash() {
+// Load flashcards from local storage
+function loadFlashcards() {
+    const savedFlashcards = JSON.parse(localStorage.getItem('flashcards')) || [];
+    savedFlashcards.forEach(card => {
+        const flashCardDiv = createFlashcardElement(card.question, card.answer);
+        FlashList.push(flashCardDiv);
+    });
+    updateFlashcard();
+}
+
+// Save flashcards to local storage
+function saveFlashcardsToStorage() {
+    const flashcardsData = FlashList.map(card => ({
+        question: card.querySelector('h3:not(.answer)').textContent,
+        answer: card.querySelector('.answer').textContent
+    }));
+    localStorage.setItem('flashcards', JSON.stringify(flashcardsData));
+}
+
+function createFlashcardElement(questionText, answerText) {
     const flashCardDiv = document.createElement('div');
     flashCardDiv.className = 'flash-cards';
     flashCardDiv.innerHTML = `
-        <h3>${question.value}</h3>
-        <h3 class="answer" style="display: none;">${answer.value}</h3>
+        <h3>${questionText}</h3>
+        <h3 class="answer" style="display: none;">${answerText}</h3>
     `;
-    
-    // Add toggle answer event listener to the newly created flashcard
     flashCardDiv.addEventListener('click', toggleAnswer);
+    return flashCardDiv;
+}
 
+function CreateFlash() {
+    const flashCardDiv = createFlashcardElement(question.value, answer.value);
     FlashList.push(flashCardDiv);
     updateFlashcard();
+    saveFlashcardsToStorage();
 
     // Clear input fields
     question.value = '';
@@ -86,6 +108,9 @@ function toggleAnswer() {
 saveButton.addEventListener("click", CreateFlash);
 GoRight.addEventListener("click", swipeRight);
 GoLeft.addEventListener("click", swipeLeft);
+
+// Load flashcards when the page loads
+window.addEventListener('load', loadFlashcards);
 
 
 
